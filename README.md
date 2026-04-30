@@ -12,11 +12,16 @@ Use this only for videos you have the rights/permission to download and in compl
 
 ## Setup
 
-```bash
-cd /Users/iaa/Work/youtube
-python3 -m pip install -r requirements.txt
-brew install ffmpeg
-```
+1. **Install FFmpeg:**
+   - **macOS:** `brew install ffmpeg`
+   - **Windows:** `winget install ffmpeg` (or download from [ffmpeg.org](https://ffmpeg.org/download.html))
+   - **Linux (Ubuntu/Debian):** `sudo apt update && sudo apt install ffmpeg`
+
+2. **Install Python dependencies:**
+   ```bash
+   cd /path/to/youtube
+   python3 -m pip install -r requirements.txt
+   ```
 
 ## Download
 
@@ -24,13 +29,28 @@ brew install ffmpeg
 python3 ytdl_mp4.py "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-Or read URLs from a text file (one per line), e.g. a file named `url`:
+### Batch Download via Text File
 
-```bash
-python3 ytdl_mp4.py url
-```
+You can download multiple videos by providing a text file containing the URLs.
 
-Empty lines and lines starting with `#` are ignored. It will sequentially download all valid URLs in the file.
+1. **Create a file** named `url` (or any other name):
+   ```bash
+   touch url
+   ```
+
+2. **Add your links** to the file, one per line:
+   ```text
+   # Add your URLs below
+   https://www.youtube.com/watch?v=VIDEO_ID_1
+   https://www.youtube.com/watch?v=VIDEO_ID_2
+   ```
+
+3. **Run the script** and pass the file name as the argument:
+   ```bash
+   python3 ytdl_mp4.py url
+   ```
+
+*Note: Empty lines and lines starting with `#` are ignored. The script will sequentially download all valid URLs found in the file.*
 
 Files go to `downloads/` by default.
 
